@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #03</h1>
+    <div id='conteudo'></div>
+
+    <script>
+    
+    //O metodo ready é acionado quando a DOM estiver "pronta", ou seja
+    //Pagina estiver carregada
+    //Esse é um otimo jeito de evitar declarar function, var, const
+    //no escopo GLOBAL
+    // $(document).ready(function() {
+    //Mesma coisa da de cima, será executado após a DOM ser carregada
+    $(function() {
+
+        const alunos = [
+            { nome: 'Ana', nota: 9.1 },
+            { nome: 'Bianca', nota: 8.4 },
+            { nome: 'Carlos', nota: 7.6 },
+            { nome: 'Julia', nota: 9.7 }
+        ]
+
+        //Forma do professor resolver
+        //Percorrendo o array de alunos
+        const linhas = alunos.map(aluno => {
+            //Criando um elemento e atribuindo um conteudo
+            const tdNome = $('<td>').html(aluno.nome)
+            const tdNota = $('<td>').html(aluno.nota)
+
+            return $('<tr>').append(tdNome, tdNota)
+        })
+
+        //Criando um elemento e atribuindo um conteudo
+        const tabela = $('<table>').append(linhas)
+                //Adicionando borda ao elemento
+                .css('border', 'solid 5px')
+        //Acrescentando a tabela ao elemento
+        $('#conteudo').append(tabela)
+
+        //Minha forma de resolver o exercicio
+        // $('#conteudo').append('<table id="tb1"></table>')
+        // pessoas.forEach((v, i, a) => {
+        //     $('#tb1').append(`<tr id="${i}"></tr>`)
+        //     $(`#${i}`).append(`<td>${a[i].nome}</td>`).append(`<td>${a[i].nota}</td>`)
+        // })
+
+    })
+        
+    </script>
+</body>

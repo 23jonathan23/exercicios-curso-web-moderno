@@ -1,0 +1,61 @@
+<table>
+  <!--É usado para dizer o que representa a tabela-->
+  <caption>Produto</caption>
+  <!-- Cabeçalho da tabela -->
+  <thead>
+    <!--Linha da tabela table row-->
+    <tr>
+      <!--Table head / cabeçalho da coluna-->
+      <th>Produto</th>
+      <th>Preço</th>
+      <th>Quantidade</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <!--Corpo da tabela onde ficará o conteudo-->
+  <tbody>
+    <!--Linha-->
+    <tr>
+      <!--Table data, um dado em si-->
+      <td>iPad</td>
+      <td>3289,00</td>
+      <td>5</td>
+      <td>16785,98</td>
+    </tr>
+    <tr>
+      <td>Sansung S9</td>
+      <td>2354,99</td>
+      <td>8</td>
+      <td>21636,98</td>
+    </tr>
+  </tbody>
+  <!--Rodapé da tabela-->
+  <tfoot>
+    <tr>
+      <!--Quando necessario ocupar mais de uma coluna-->
+      <!--utilizar a propriedade colspan-->
+      <td colspan="3">Total</td>
+      <td>37176,99</td>
+    </tr>
+  </tfoot>
+</table>
+
+<style>
+  table {
+    border-collapse:collapse;
+  }
+  th, td {
+    padding: 10px;
+  }
+  thead tr {
+    border-bottom: solid 3px #444;
+  }
+  tbody tr:hover {
+    background-color: #dedede;
+  }
+  tfoot {
+    background-color: #444;
+    color: #fff;
+    font-weight: bold;
+  }
+</style>

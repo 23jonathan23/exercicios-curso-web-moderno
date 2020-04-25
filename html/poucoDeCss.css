@@ -1,0 +1,9 @@
+/* O id em css é definido por # e o valor do id*/
+#textoPrincipal {
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px;
+  background-color: #444;
+  margin-bottom: 50px;
+}

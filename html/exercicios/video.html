@@ -1,0 +1,65 @@
+<!--Propriedade controls e responsavel por exibir os controles de video
+A propriedade autoplay e responsável por iniciar o video ao entrar na pagina
+e a propriedade controlsList é usada para exibir ou não algum contrele
+específico-->
+<video id="meuVideo" width="800" height="450" controls autoplay 
+controlsList ="nodownload">
+  <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+</video>
+
+<!--Barra de progresso-->
+<div wm-progresso = "meuVideo" class="progresso">
+  <div></div>
+</div>
+
+<div>
+  <!--Botão de play-->
+  <button wm-play="meuVideo">Play</button>
+  <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+  .progresso {
+    height: 20px;
+    width: 500px;
+    border: solid 1px #444;
+    margin: 20px;
+  }
+  .progresso > div {
+    background-color: red;
+    color: #fff;
+    height: 100%;
+    text-align: right;
+    font-size: 14px;
+    width: 0px;
+  }
+</style>
+
+<script>
+  
+  function configurarVideo(id) {
+
+    const video = document.getElementById(id)
+    //Desativa o menu do video
+    video.oncontextmenu = () => false
+
+    //Evento .play é responsavél por iniciar o video
+    //Evento .pause é responsavél por pausar o video
+    document.querySelector(`[wm-play=${id}]`).onclick = e => video.play()
+    document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause()
+
+    //Barra de progresso para aconpanhar o video
+    setInterval(() => {
+      //Descobrindo o percentual
+      const percentual = (video.currentTime / video.duration) * 100
+      //Selecionando a div da barra de progresso
+      const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`)
+      //Atribuindo valor de progresso
+      valorDiv.style.width = `${percentual}%`
+      valorDiv.innerHTML = `${percentual.toFixed(1)}%`
+    }, 500)
+
+  }
+
+  configurarVideo('meuVideo')
+</script>

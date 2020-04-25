@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>
+        //Seleciona o elemeto(tag html) pelo ID              
+        document.getElementById('primeiro').classList.add('destaque')
+        //Seleciona os elemetos a partir do tipo da tag nesse caso 'DIV'
+        const divs = document.getElementsByTagName('div')
+        //A função Array.from tranforma um HTMLColection em um Array
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))
+        //Outra maneira de tranforma um HTMLColection em um array
+        // e a partir do operador spread
+        const divsArray = [...divs]
+        divsArray.forEach(e => e.classList.add('destaque'))
+
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        //E possivel manipular ter acesso a os elementos através do for
+        for(let e of ultimosElementos) {
+            e.classList.remove('destaque')
+        }
+    </script>
+</body>
+</html>

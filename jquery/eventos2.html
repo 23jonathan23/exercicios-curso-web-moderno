@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #02</h1>
+    <div id='div1'>1</div>
+    <div id="resultado1">?</div>
+    <br>
+    <input type="text" placeholder="Digite e Selecione">
+    <div id="resultado2">?</div>
+    <script>
+        
+        const alternarDestaque = () => $('#div1').toggleClass('destaque')
+        //No evento on podemos passa mais de um evento por parametro
+        //$('#div1').on('mouseenter mouseleave', alternarDestaque)
+        //Paramentro , function de entrada, function de saida.
+        $('#div1').hover(alternarDestaque, alternarDestaque)
+
+        //O evento one é executado somente uma vez
+        $('#div1').one('mouseenter', e => alert('Aviso Importante: Obrigado'))
+        //O evento dblclick é ativado quando o usuario clica 2veses sobre o elemento
+        $('#div1').dblclick(e => $('#div1').fadeOut(1000).fadeIn(1000))
+
+        //O evento resize é ativo quando o tamanho da tela é alterado
+        $(window).resize(function(e) {
+            const l = $(window).width() //largura atual da tela
+            const a = $(window).height() //altura atual da tela
+            $('#resultado1').html(`Largura: ${l} e Altura: ${a}`)
+        })
+
+        //Evento disparado quando acontece uma seleção do texto do input
+        $(':input').select(e => {
+            //selectionStart: onde começou a seleção
+            const inicio = e.target.selectionStart
+            //selectionEnd: onde finalizou a seleção
+            const fim = e.target.selectionEnd
+            $('#resultado2').html(e.target.value.substring(inicio, fim))
+        })
+    </script>
+</body>

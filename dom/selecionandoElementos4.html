@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log() {
+            console.log(this)
+        }
+        
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        //Selecionando o pai no Caso parent em inglês, a partir do filho
+        // que no caso o pai é a div e o filho a ul
+        lista.parentNode.log()
+        //Selecionando os elementos filhos 
+        lista.childNodes.log()
+
+        const primeiro = lista.firstChild
+        primeiro.log()
+        //Seleciona o proximo elemento filho (irmão)
+        primeiro.nextSibling.log()
+
+        const ultimo = lista.lastChild
+        ultimo.log()
+        //Seleciona o elemento filho (irmão) anterior
+        ultimo.previousSibling.log()
+        //Seleciona todos os elementos filhos, retorna um HTMLCollection
+        lista.children.log()
+        //seleciona o primeiro elemento filho
+        lista.firstElementChild.log()
+        //seleciona o ultimo elemento filho
+        lista.lastElementChild.log()
+        //é possivel aplicar uma seleção de criterios multiplos
+        //como essa
+        lista.parentNode.previousElementSibling.log()
+        lista.parentNode.nextElementSibling.log()
+
+        //Priorizar a seleção mais objetiva, sem ter a necessidade de ficar
+        //navegando dentro dos elementos
+        document.querySelectorAll('div ul li').log()
+    </script>
+</body>
+
+</html>

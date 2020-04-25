@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário Via Fetch</h1>
+    <form name="usuarioForm" action="formulario" method="post">
+        <input type="text" name="nome" placeholder="Nome..." />
+        <input type="text" name="sobrenome" placeholder="Sobrenome..." />
+        <button>Salvar</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        //Esse evento e ativado quando o usuario subimete o formulario
+        document.usuarioForm.onsubmit = async e => {
+            e.preventDefault() //Evita o comportamento padrão
+
+            //atribuindo o formulario a constante
+            const form = e.target
+            //Armazenando os dados do formulario na constante Data
+            const data = new FormData(form)
+
+            const options = {
+                //(tipo) Metodo da requisição
+                method: form.method,
+                body: new URLSearchParams(data)
+
+            }
+
+            //Selecionando o elemento com o id Resultado
+            const resultado = document.getElementById('resultado')
+            
+            //Paramentos Rota, e objeto de opições
+            //.action é uma propriedade no formulario
+            //que contem o mesmo nome da rota
+            // fetch(form.action, options)
+            // .then(resp => resp.json()) //Convertendo resposta da promisses em JSON
+            // .then(json => {
+            //     //Convertendo e atraibuindo o json ao elemento Resultado
+            //     resultado.innerHTML = JSON.stringify(json)
+
+            //     })
+            //     .catch(e => {
+            //         resultado.innerHTML = e
+            //     })
+
+            //Refazendo o exemplo com await
+            try{
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+            } catch (e) {
+                resultado.innerHTML = e
+            }
+
+        }
+    </script>
+</body>

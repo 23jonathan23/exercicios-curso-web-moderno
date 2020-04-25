@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        //Selecionando um formulario, nessa caso é retronado um HTMLColection
+        console.log(document.forms)
+        //Selecionando o formulario que está na posição 0, caso haja mais de 1
+        //nesse caso já e retornado o proprio elemento
+        console.log(document.forms[0])
+        //Selecionando os elementos através dos seu nomes, nessa caso é retornado
+        // um NodeList
+        console.log(document.getElementsByName('pesquisa'))
+        //Selecionando o elemento formulario diretamento pelo seu nome
+        //através da notação ponto
+        console.log(document.pesquisa)
+        //Selecionando o input dentro do formulario pelo nome
+        console.log(document.pesquisa.q)
+        //selecionando o valor do input do formulario e atribuindo um novo valor
+        document.pesquisa.q.value = 'Linux BR'
+        document.pesquisa.hl.value = 'en-us'
+        console.log(document.pesquisa.hl.selectedIndex)
+
+    </script>
+</body>
+
+</html>

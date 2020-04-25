@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        // O querySelector e o querySelectorAll, recebe como parametro
+        //seletores CSS, como por exemplo #id .class e assim por diante
+        //Então ele é bem mais flequissivel pois pode ser usado para
+        // selecionar todos os tipos (tag, class, id, atributo, filhos e etc)
+        document.querySelector('#primeiro').classList.add('destaque')
+
+        const selecionar = seletor => {
+            //O QuerySelector retorna um NodeList não um HTMLColection
+            //E ele tambem possui a função 'forEach', porem não é um Array
+            //Caso seja necessario manipular de uma forma mais liberal
+            //Deve ser transformado para um Array
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+        }
+        const deselecionar = seletor => 
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))
+        
+        selecionar('div')
+        //deselecionando todos os elementos
+        deselecionar('*')
+        //selecionando um elemento que possua as duas class
+        selecionar('.terceiro.ultimo')
+
+        deselecionar('*')
+        selecionar(':not(#primeiro)')
+
+        deselecionar('*')
+        selecionar(':nth-child(1)') 
+
+        deselecionar('*')
+        selecionar('div:nth-of-type(1)')
+
+        deselecionar('*')
+        selecionar('[wb-attrib]')
+    </script>
+</body>
+</html>

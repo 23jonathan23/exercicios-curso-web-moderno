@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        const item = document.querySelector('div')
+        item.style.position = 'absolute'
+        //esse evento identifica o movimento do mouse
+        //"onmousemove"
+        item.onmousemove = e => {
+            //Elemento que disparou o evento
+            const item = e.target
+            //altera a propriedade do style do curso para move
+            item.style.cursor = 'move'
+            //e.buttons se tiver diferente de 0, seguinifica que ouve
+            //um click com o mouse
+            if(e.buttons) {
+                //e.clientY - identifica a posição do mouse em relação
+                //ao eixo Y - no caso eixo vertical
+                //item.clientHeight é a altura do elemento
+                item.style.top = `${e.clientY - (item.clientHeight /2)}px`
+                item.style.left = `${e.clientX - (item.clientWidth /2)}px`
+            }
+        }
+    </script>
+</body>

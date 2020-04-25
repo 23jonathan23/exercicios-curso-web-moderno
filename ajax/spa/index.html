@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+        function navegarViaAjax(url, seletor, push = true) {
+            //verificando se a url e o seletor estão presentes
+            if(!url || !seletor) return
+            //Selecionando um elemento
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+                .then(resp => resp.text())//Convertendo a promisses para texto
+                .then(html => {
+                    //alterando o conteudo do elemento
+                    elemento.innerHTML = html
+                    //Verifica se o push é verdadeiro
+                    if(push) {
+                        //Paramentros do pushState 
+                        //Seletor, titulo da pagina, url
+                        //Colocando mais um elemento no historico do browser
+                        history.pushState({ seletor }, "Página Ajax", url)
+                    }
+                })
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            //Armazenando o valor do atributo personalizado wm-link atual
+            const url = link.attributes['wm-link'].value
+            //Armazenando o valor do atributo personalizado wm-destino atual
+            const seletorDestino = link.attributes['wm-destino'].value
+
+            link.onclick = e => {
+                e.preventDefault() //Evita o comportamento padrão do evento
+                navegarViaAjax(url, seletorDestino)
+            }
+
+        })
+
+        //Evento responsável por retirar um elemento da pilha do historico
+        //de navegação
+        window.onpopstate = e => {
+            if(e.state) {
+                navegarViaAjax(window.location.href, e.state.seletor, false)
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+
+    <!-- Template Vue -->
+    <div id="app">
+        <p>1) {{ 2 + 2 }}</p>
+        <p>2) {{ "teste".toUpperCase() }}</p>
+        <p>3) Produto: {{ nome }}, R${{ preco }}, {{ desconto * 100 }}% </p>
+        <p>4) Hora certa: {{ horaCerta() }}</p>
+        <p>5) Preço com desconto: R${{ precoComDescontos }}</p>
+    </div>
+
+    <script>
+        //Vue instanse
+        new Vue ({
+            //El é o elemento que o vue vai controlar
+            //recebe como parametro o seletor do elemento
+            el: "#app",
+            //Dados que serão usados dentro do template vue
+            //São armazenados aqui
+            data: {
+                nome: 'Caneta',
+                preco: 6.39,
+                desconto: 0.15
+            },
+            //Metodos/Function que serão usados dentro do template vue
+            //São armazenados aqui
+            methods: {
+                horaCerta() {
+                    return new Date().toLocaleString()
+                }
+            },
+            //Dados ja calculados que serão usados dentro do template vue
+            //São armazenados aqui
+            //Valores computados quando usados no templates
+            //Não há necessidade de chamar como uma function
+            //Nos referimos a ele como uma variavel comum
+            computed: {
+                precoComDescontos() {
+                    //Nesse contexto que estamos acessando os dados
+                    //que estão armazenados em data
+                    //usamos apenas this.nomedodado
+                    return this.preco * (1 - this.desconto)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

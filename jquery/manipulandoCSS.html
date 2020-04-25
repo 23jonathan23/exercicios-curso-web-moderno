@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando CSS</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando CSS</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='resultado'></div>
+    <script>
+
+        //Armazenando a propriedade css do elemento na constante
+        const fonte = $('#div1').css('font-family')
+        //Iserindo um conteudo no elemento em questão
+        $('#resultado').append(`Fonte ${fonte}`)
+        //Alterando a propriedade css do elemento
+        $('#div1').css('font-size', '3em')
+        $('#div1').css({'font-size': '3.5em', 'color': 'yellow' })
+        $('#div1').css('font-size', function () {
+            return `${2 * 2}em`
+        })
+
+        //Adicionando um Class ao elemento
+        $('#div2').addClass('destaque')
+
+        //Verifica se o elemento possui a class em questão
+        const temClasse = $('#div2').hasClass('destaque')
+        //Iserindo um conteudo no elemento em questão
+        $('#resultado').append(`<br>Tem Class? ${temClasse}`)
+
+        //Remove a class do elemento
+        $('#div2').removeClass('destaque')
+        //Se tiver a class ele remove, se não tiver ele coloca
+        $('#div2').toggleClass('destaque')
+        $('#div2').toggleClass('destaque')
+
+
+
+    </script>
+</body>

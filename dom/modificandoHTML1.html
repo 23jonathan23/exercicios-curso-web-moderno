@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        const body = document.querySelector('body')
+        //O metodo createElement é responsavel por criar um no elemento
+        const div1 = document.createElement('div')
+        div1.classList.add('destaque')
+        //A propriedade innerHTML é o conteudo do elemento
+        div1.innerHTML = 'Primeiro'
+
+        const div2 = document.createElement('div')
+        //atribuindo atributos a div
+        div2.setAttribute('wm-atributo', 'valor')
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+        const div3 = document.createElement('div')
+        //O metodo appendChild adiciona um elemento ao elemento em questão
+        div3.appendChild(p)
+        //O metodo appendChild adiciona um elemento ao elemento em questão
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        //Cria um elemento do tipo texto
+        const texto = document.createTextNode('Antes...')
+        //insertBefore serve para inserir um elemento passando a posição
+        //em que ele será inserido, nesse caso será inserido antes do primeiro
+        // filho (elemento)
+        div3.insertBefore(texto, div3.childNodes[0])
+        //O metodo cloneNode é usado para clonar um determinado elemento
+        //é passado como parametro true ou false, true ele fará um clone com
+        //todos os filhos(elementos) presentes dentro do elemento em questão
+        //caso passe false, não será levado em conta os filhos.
+        const div4 = div3.cloneNode(true)
+        body.appendChild(div4)
+        //O metodo removeChild é usado para remover um elemento
+        body.removeChild(div3)
+        
+    </script>
+</body>
+
+</html>

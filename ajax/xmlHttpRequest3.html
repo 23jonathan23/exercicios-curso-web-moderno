@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            //Abrindo a requisição
+            xhr.open(config.metodo, config.url, true)
+
+            //Esse evento é disparado sempre que o status da requsição muda
+            xhr.onreadystatechange = e => {
+                //Verificando se a requição foi finalizada e a responta pronta
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        config.sucesso(xhr.responseXML)
+                    } else if (xhr.status >= 400) {
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            //Envia a resposta
+            xhr.send()
+        }
+
+        ajax({
+            url: "dados/estados.xml",
+            metodo: "get",
+            sucesso(resposta) {
+                //Aramazenando os elementos do XML
+                //que gera uma lista de tags de estados
+                const estados = resposta.getElementsByTagName('estado')
+                //Tranformando a lista de tags em array e aplicando o reduce
+                const itens = Array.from(estados).reduce(
+                    //O reduce recebe o acumulador e a tag atual
+                    //O acumulador é o array que será gerado no final
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, ''
+                )
+                //Acrescentando os elementos ao body
+                //Paramentos, Posição e elementos
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            },
+            erro(e) {
+                //Criando um elemento do tipo texto
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                //Acrescentando um elemento ao Body
+                document.body.appendChild(msg)
+            }
+        })
+    </script>
+</body>

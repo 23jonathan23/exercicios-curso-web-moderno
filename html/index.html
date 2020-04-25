@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios HTML</title>
+  <style>
+    #conteudo {
+      padding: 30px 0px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Exercícios HTML</h1>
+  </header>
+  <nav>
+    <a href="exercicios/teste.html">00 - Teste</a> ||
+    <a href="exercicios/texto1.html">01 - Texto 1</a> ||
+    <a href="exercicios/texto2.html">02 - Texto 2</a> ||
+    <a href="exercicios/listas.html">03 - Listas</a> ||
+    <a href="exercicios/listaAninhada.html">04 - Lista Aninhada</a> ||
+    <a href="exercicios/links.html">05 - Links</a> ||
+    <a href="exercicios/tabela.html">06 - Tabela</a> ||
+    <a href="exercicios/form/form.html">07 - Formulário</a> ||
+    <a href="exercicios/imagens.html">08 - Imagens</a> ||
+    <a href="exercicios/video.html">09 - Video</a> ||
+    <a href="exercicios/tagsNãoVisuais.html">10 - Tags Não Visuais</a>
+  </nav>
+  <section id="conteudo">
+
+  </section>
+  <footer>
+    Curso de Web Moderno
+  </footer>
+  <script>
+    //seleciona determinada tag
+    //E com o uso do forEach, para cada link com a tag a no evento onclink
+    //Estou atribuindo um function
+    document.querySelectorAll('a').forEach(link => {
+
+      //o metodo getElementById seleciona uma tag através do id
+      const conteudo = document.getElementById('conteudo')
+
+      //evento onClick é disparado quando o usuario clicar sobre
+      // a fucntion está capturando o evento
+      //Aki estou 
+      link.onclick = function(e) {
+        //Esse metodo evita que o evento padrão seja executado
+        e.preventDefault()
+        //esse metodo é usado para fazer um requisição ajax
+        //o metodo fetch retorna uma Promises
+        //.href me da um link da pagina
+        fetch(link.href)
+          //o metodo .text serve para pegar o conteudo textual de uma pagina
+          //HTML, e ai após ele que de fato tenho a pagina html
+          .then(resp => resp.text())
+          //conteudo.innerHTML = html aqui estou substituindo o conteudo da
+          // tag pelo obtido através da requisição
+          .then(html => conteudo.innerHTML = html)
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        //Definindo a url (caminho onde está localizado o arquivo)
+        const url = 'dados/estados.json'
+        //O axios ja me retorna um Array isso facilita o processo
+        axios(url).then(resp => {
+            const itens = resp.data.reduce(
+                //Gerando um novo Array com as LI ja com os estados
+                (html, estado) => html + `<li>${estado.nome}</li>`, '' 
+            )
+            //Acrescentando os estados ao elemento body ja com a UL
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+        })
+    </script>
+</body>

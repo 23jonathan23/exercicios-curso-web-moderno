@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+
+        /* O media query é usado para responsividade
+        mídia é um módulo CSS3 que permite que a 
+        renderização de conteúdo se adapte a condições 
+        como resolução de tela,
+        O media funciona da seguinte forma, @media entre os parenteses ()
+        será colocado a condição, tipo um if, caso essa condição seja verdadeira
+        a proxima linha de comando dentro do media será executada */
+        @media (max-width: 600px) {
+            .muito-pequeno { display: block;}
+        }
+
+        /* Nesse caso estamos usando o operador "OU" que é representado
+        pela "," virgula, então caso 1 das condições sejam compridas a
+        proxima linha será executada */
+        @media (max-width: 1000px), (orientation: portrait) {
+            .pequeno-retrato { display: block }
+        }
+
+        /* Nesse caso estamos usando o operador "E" que é representado
+        pelo "and", então caso todas as condições sejam compridas a
+        proxima linha será executada */
+        @media (min-width: 500px) and (max-width: 1000px) {
+            .intervalo { display: block; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

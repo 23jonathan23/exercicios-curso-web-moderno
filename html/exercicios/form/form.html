@@ -1,0 +1,56 @@
+<h1>Formulário</h1>
+
+<form method="POST">
+  <!--Esse é um input que não aparece para o usuario-->
+  <input type="hidden" name="id" value="3">
+  <!--componente do tipo text-->
+  <input type="text" name="nome">
+  <!--componente do tipo password-->
+  <input type="password" name="senha">
+  <!--componente do tipo text caixa-->
+  <textarea name="bio" cols="30" rows="10"></textarea>
+
+  <div>
+    <!--componete do tipo radio button-->
+    <input type="radio" name="tipo" value="admin"> Admin
+    <input type="radio" name="tipo" value="regular"> Regular
+    <input type="radio" name="tipo" value="professor"> Professor
+  </div>
+  <div>
+    <!--componente do tipo checkbox-->
+    <input type="checkbox" name="ativo"> Ativo
+  </div>
+  <!--componente do tipo caixa de seleção-->
+  <select name="estado">
+    <!--Opições de valor do componente-->
+    <option value="">Selecione</option>
+    <option value="ac">Acre</option>
+    <option value="sp">São Paulo</option>
+    <option value="rs">Rio Grande do Sul</option>
+  </select>
+
+  <!--componente caixa de seleção multipla, size é a quantidade a ser exibida -->
+  <select name="interresses" multiple size="6">
+    <option value="js">JavaScript</option>
+    <option value="java">Java</option>
+    <option value="php">PHP</option>
+    <option value="python">Python</option>
+    <option value="go">GO</option>
+    <option value="c">C</option>
+  </select>
+  <!--Componente do tipo botão, a propriedade formaction defide qual
+  endereço será feito a requisição-->
+  <button formaction="http://localhost:3033/usuarios">Incluir</button>
+  <button formaction="http://localhost:3033/usuarios/3">Alterar</button>
+</form>
+
+<style>
+  input, textarea, select {
+    display: block;
+    margin-bottom: 10px;
+  }
+  input[type="radio"],
+  input[type="checkbox"] {
+    display: inline;
+  }
+</style>

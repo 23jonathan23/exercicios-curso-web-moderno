@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        //JQuery é referenciado pelo $
+        //Selecionando elemento com JQuery
+        //metodo hide esconde os elementos //parametros: milisegundos
+        //metodo show exibe os elementos //parametros: milisegundos
+        //Animação e encadeamento de metodos
+        //Quando selecinamos elementos com o JQuery o que é retornado
+        //não é os elementos "puro" da DOM e sim um elemento "decorado"
+        //que possui varias função para serem usadas
+        $('div').hide(5000).show(5000).fadeOut(5000)
+        console.log($('div').get(0)) //Pegando elemento puro da DOM, que está na posição 0
+        console.log($.isEmptyObject({nome: null})) //metodo que verifica se o objeto está vazio
+        console.log(jQuery.inArray(3, [1, 2, 3])) //verifica se determidado valor está presento em um array
+
+        //Criando function 'Plugin' para uso a partir do jQuery
+        $.fn.fundoVerde = function () {
+            this.css('background-color', 'green')
+            return this //O retorno do elemento 'this' é crucial para 
+            //que seja possivel usar o encadeamento do chamadas
+            //como no exemplo abaixo.
+        }
+        //Utilizando a function criada e atribuida ao jQuery
+        $('body').fundoVerde().fadeOut(1000)
+    </script>
+</body>

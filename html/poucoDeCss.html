@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Um Pouco de CSS</title>
+    <!--Através da tag link posso conectar um arquivo Css com html-->
+    <!--Ou seja referenciar-->
+    <link rel="stylesheet" href="poucoDeCss.css">
+    <!-- dentro de Style é onde é escrito o codigo CSS-->
+    <style>
+      /* Aplicando style referenciando a tag*/
+      h1 {
+        font-size: 20px;
+      }
+      /* Uma class em css é definida por . e o nome da class*/
+      .fundoVermelho {
+        background-color: red;
+      }
+      .negrito {
+        font-weight: bold;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>CSS</h1>
+    <span id="textoPrincipal">Texto 1</span><br><br>
+    <!--É possivel ter mais de uma class em uma derterminada tag-->
+    <span class="fundoVermelho negrito">Texto 2</span><br><br>
+    <span class="fundoVermelho">Texto 3</span>
+  </body>
+</html>

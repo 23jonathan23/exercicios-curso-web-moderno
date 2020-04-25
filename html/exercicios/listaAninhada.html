@@ -1,0 +1,58 @@
+<h1>Projeto</h1>
+<ul class="tree">
+  <li>
+    <span wm-folder>backend</span>
+    <ul>
+      <li>
+        <span wm-folder>app</span>
+        <ul>
+          <li>produtos.js</li>
+          <li>usuario.js</li>
+          <li>vendas.js</li>
+        </ul>
+      </li>
+      <li>
+        <span wm-folder>config</span>
+        <ul>
+          <li>banco.js</li>
+          <li>routes.js</li>
+          <li>servidor.js</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <span wm-folder>frontend</span>
+    <ul>
+      <li>
+        <span wm-folder>public</span>
+        <ul>
+          <li>app.css</li>
+          <li>app.js</li>
+          <li>index.html</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+  document.querySelectorAll('[wm-folder]').forEach(folder => {
+    folder.onclick = function(e) {
+      //.next... é usado para referenciar o proximo elemento
+      // que esteja dentro da tag referenciada anteriormente
+      //no caso uma outra ul, assim capturamos a ul
+      const ul = folder.nextElementSibling
+      //Captura a situação da ul se ela está 
+      //none = não está visivel ou
+      //block = está visivél
+      const d = ul.style.display
+      //Operação ternaria
+      //Verifica se o atributo display está com o valor 'none' - não visivel
+      //se tiver ele recebe o valor de 'block' - visivel
+      // se não ele recebe o valor de 'none' - não visivel
+      ul.style.display = d === 'none' ? 'block' : 'none'
+    }
+  })
+</script>

@@ -1,0 +1,19 @@
+let dobro = function (a) {
+    return 2 * a
+}
+
+// as funções Arrow não possuem nomes e obrigatoriamente devem ser armazenadas ou em const ou em variavel
+dobro = (a) => {
+    return 2 * a
+}
+
+dobro = a => 2 * a // retorno implícito
+console.log(dobro(Math.PI))
+
+let ola = function () {
+    return 'Olá'
+}
+
+ola = () => 'Olá'
+ola = _ => 'Ola' // possui um parametro
+console.log(ola())
